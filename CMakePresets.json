@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {"name":"windows-mingw-debug","generator":"Ninja","binaryDir":"${sourceDir}/build/debug","cacheVariables":{"CMAKE_BUILD_TYPE":"Debug","CMAKE_C_COMPILER":"gcc","CMAKE_CXX_COMPILER":"g++"}},
+    {"name":"windows-mingw-release","inherits":"windows-mingw-debug","binaryDir":"${sourceDir}/build/release","cacheVariables":{"CMAKE_BUILD_TYPE":"Release"}}
+  ],
+  "buildPresets": [
+    {"name":"windows-mingw-debug","configurePreset":"windows-mingw-debug","jobs":8},
+    {"name":"windows-mingw-release","configurePreset":"windows-mingw-release","jobs":8}
+  ]
+}

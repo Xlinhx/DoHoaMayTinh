@@ -1,0 +1,81 @@
+{
+  "revision": "r1",
+  "source_sha256": "dafc7ad0aa4aaf9268259b8fe18e36396b8507caef38fe2400bc0a665167a1cf",
+  "asset_identity_fingerprint": "2ee8fc1c6c38830135d31d455448ce8910a709e9b5aa9ce3b7b5053fe54d5954",
+  "blender": "5.2.2 LTS",
+  "checks": [
+    "3 linked claw fingers",
+    "8 prize instances share volume mesh",
+    "all prize dimensions equal canonical dimensions",
+    "one unique target instance",
+    "all 8 states preserve asset fingerprint",
+    "held target follows head offset",
+    "all poses stay inside gantry travel",
+    "32 sampled extreme-travel poses keep evaluated claw envelope inside glass and above floor",
+    "evaluated cabinet bounds equal canonical 0.90 x 0.91 x 1.80 metres"
+  ],
+  "measurements": {
+    "cabinet_bounds": {
+      "min": [
+        -0.45000001788139343,
+        -0.5300000309944153,
+        0.0
+      ],
+      "max": [
+        0.45000001788139343,
+        0.3799999952316284,
+        1.7999999523162842
+      ]
+    },
+    "overall_dimensions_m": [
+      0.9000000357627869,
+      0.9100000262260437,
+      1.7999999523162842
+    ],
+    "minimum_sampled_glass_clearance_m": 0.007101656913757304,
+    "claw_envelope_poses": 32
+  },
+  "rendered": [
+    "01-hero.png",
+    "02-front.png",
+    "03-side.png",
+    "04-back.png",
+    "05-top.png",
+    "06-cutaway.png",
+    "07-claw-open.png",
+    "08-claw-grip.png",
+    "09-prize.png",
+    "10-aim.png",
+    "11-lower.png",
+    "12-grip.png",
+    "13-lift.png",
+    "14-return.png",
+    "15-release.png",
+    "16-result.png",
+    "17-materials.png"
+  ],
+  "render_sha256": {
+    "01-hero.png": "16ed9c0deb7252a994f11ff593eb0811dc0b56b4f99523e94816e48335fca443",
+    "02-front.png": "8a27f464d2efed174be4ad67ccb74943a23a129035028dd0c983d5be04ccc671",
+    "03-side.png": "3b6e00d12135b5a634c979e1a64ddb207e1ce9a4894f9a5f92bdfe156c7791ea",
+    "04-back.png": "912ffec674afcab5d218d688f83b9420d2f43d6c51310c187d1f8a384577c322",
+    "05-top.png": "6f09a7c35b25b3bd070ab128247d1f6d86cdd5433b94534eab440534ac4546ab",
+    "06-cutaway.png": "400bc3b03438695bec49b639817dfb0438ee65c48e206d97919bcf3398ad640f",
+    "07-claw-open.png": "2e464adcfce72894df552fbf5af20503ab1ee7250611e397420b82857877f3ab",
+    "08-claw-grip.png": "1c02816694dbc8cd281a9ad3ee617be564ceea943b1bfabf2037aecc42c322e5",
+    "09-prize.png": "d96b3ae282702e7697f692999fbed90f38f164bd2048af5278845916820b26b7",
+    "10-aim.png": "be6b086b7f5e18db16e3c7790188698c41d5bb33109a4e1734f60d95f36c6d77",
+    "11-lower.png": "ea4fda9a38c73ae5d23b75c1feaffae8c9646f5051254af1755121f4d1c11126",
+    "12-grip.png": "ff6eb44d15a9e44833744c2ed6b50308b417844893fef087a3121d43c179e218",
+    "13-lift.png": "4878f955992008d01310626ee647b1832b08e31ad62c6ddaaf1f37dca3e8fd6b",
+    "14-return.png": "7d3873edba863d22afafd605a3bb978508408fdc5fcd3862c510c035c349e441",
+    "15-release.png": "41fdb77f012826960390d77c7d28cbcfb9b616c326bb9436346953beb5d84692",
+    "16-result.png": "31c7c71954b03111ebaa8d185e538be15cd25191226c73816d2b1182e96af993",
+    "17-materials.png": "6372355e0410b3a5439b87902596c4b909222ac3fdf6e9e88ce6cb32b3e8a0d2"
+  },
+  "limits": [
+    "mockups, not a running game",
+    "no dynamic contact/rigid body proof",
+    "Blender lighting is a look-development target, not OpenGL shader parity proof"
+  ]
+}

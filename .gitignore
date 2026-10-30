@@ -1,0 +1,32 @@
+# Reproducible build, downloaded dependency sources and release artifacts.
+/build/
+/dist/
+/third_party/
+/output/
+/cmake-build-*/
+/CMakeUserPresets.json
+
+# Local editor state. Shared formatting/configuration remains versioned.
+/.vs/
+/.idea/
+/.vscode/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python and authoring backups.
+__pycache__/
+*.py[cod]
+/.venv/
+*.blend1
+*.blend2
+*.swp
+*.swo
+*~
+
+# Local diagnostic output. Canonical asset/provenance JSON must stay tracked.
+*.log
+/imgui.ini
+/captures/

@@ -1,0 +1,724 @@
+{
+  "design_sha256": "dafc7ad0aa4aaf9268259b8fe18e36396b8507caef38fe2400bc0a665167a1cf",
+  "blend_sha256": "c55c160a4baa65882b0b9d5d52278d067e0825435d2e721ceb986b02eaffe38e",
+  "glb_sha256": "f98d6ed8a72186f1588d15c49eccf731e69a23b19f5755f73c31ad3ef9f85ea6",
+  "exporter": "Blender 5.2.2 LTS",
+  "axis_mapping": "(x,y,z) -> (x,z,-y), exactly once",
+  "mesh_comparisons": [
+    {
+      "mesh": 0,
+      "source_object": "base_back",
+      "source_vertices": 96,
+      "export_vertices": 223,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 1,
+      "source_object": "base_left",
+      "source_vertices": 96,
+      "export_vertices": 230,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 2,
+      "source_object": "base_plinth",
+      "source_vertices": 96,
+      "export_vertices": 251,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 3,
+      "source_object": "base_right",
+      "source_vertices": 96,
+      "export_vertices": 230,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 4,
+      "source_object": "bottom_frame_back",
+      "source_vertices": 96,
+      "export_vertices": 281,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 5,
+      "source_object": "bottom_frame_front",
+      "source_vertices": 96,
+      "export_vertices": 281,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 6,
+      "source_object": "bottom_frame_side_0.425",
+      "source_vertices": 96,
+      "export_vertices": 226,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 7,
+      "source_object": "bottom_frame_side_-0.425",
+      "source_vertices": 96,
+      "export_vertices": 226,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 8,
+      "source_object": "bridge_beam",
+      "source_vertices": 96,
+      "export_vertices": 285,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 9,
+      "source_object": "moving_x_rail",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 10,
+      "source_object": "claw_cap",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 11,
+      "source_object": "claw_housing",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 12,
+      "source_object": "claw_housing_ring",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 13,
+      "source_object": "finger_0",
+      "source_vertices": 250,
+      "export_vertices": 275,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 14,
+      "source_object": "finger_pad_0",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 15,
+      "source_object": "joint_pin_0",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 16,
+      "source_object": "finger_pad_1",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 17,
+      "source_object": "joint_pin_1",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 18,
+      "source_object": "finger_pad_2",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 19,
+      "source_object": "joint_pin_2",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 20,
+      "source_object": "lift_cable",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 21,
+      "source_object": "trolley_body",
+      "source_vertices": 96,
+      "export_vertices": 264,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 22,
+      "source_object": "trolley_wheel_0.04",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 23,
+      "source_object": "trolley_wheel_-0.04",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 24,
+      "source_object": "chute_back",
+      "source_vertices": 96,
+      "export_vertices": 237,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 25,
+      "source_object": "chute_front",
+      "source_vertices": 96,
+      "export_vertices": 237,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 26,
+      "source_object": "chute_left",
+      "source_vertices": 96,
+      "export_vertices": 238,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 27,
+      "source_object": "chute_right",
+      "source_vertices": 96,
+      "export_vertices": 238,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 28,
+      "source_object": "coin_label",
+      "source_vertices": 400,
+      "export_vertices": 406,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 29,
+      "source_object": "coin_slot",
+      "source_vertices": 96,
+      "export_vertices": 266,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 30,
+      "source_object": "coin_slot_plate",
+      "source_vertices": 96,
+      "export_vertices": 256,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 31,
+      "source_object": "console",
+      "source_vertices": 96,
+      "export_vertices": 266,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 32,
+      "source_object": "console_teal_plate",
+      "source_vertices": 96,
+      "export_vertices": 249,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 33,
+      "source_object": "fixed_y_rail_0.325",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 34,
+      "source_object": "fixed_y_rail_-0.325",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 35,
+      "source_object": "floor_back_left",
+      "source_vertices": 96,
+      "export_vertices": 279,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 36,
+      "source_object": "floor_front_rim",
+      "source_vertices": 96,
+      "export_vertices": 271,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 37,
+      "source_object": "floor_left_rim",
+      "source_vertices": 96,
+      "export_vertices": 271,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 38,
+      "source_object": "floor_main",
+      "source_vertices": 96,
+      "export_vertices": 269,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 39,
+      "source_object": "foot_0.34_0.27",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 40,
+      "source_object": "foot_0.34_-0.27",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 41,
+      "source_object": "foot_-0.34_0.27",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 42,
+      "source_object": "foot_-0.34_-0.27",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 43,
+      "source_object": "front_left_pillar",
+      "source_vertices": 96,
+      "export_vertices": 251,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 44,
+      "source_object": "front_right",
+      "source_vertices": 96,
+      "export_vertices": 224,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 45,
+      "source_object": "front_window_lower",
+      "source_vertices": 96,
+      "export_vertices": 279,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 46,
+      "source_object": "front_window_upper",
+      "source_vertices": 96,
+      "export_vertices": 282,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 47,
+      "source_object": "glass_back",
+      "source_vertices": 96,
+      "export_vertices": 313,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 48,
+      "source_object": "glass_front",
+      "source_vertices": 96,
+      "export_vertices": 313,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 49,
+      "source_object": "glass_front_edge_0.394",
+      "source_vertices": 8,
+      "export_vertices": 24,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 50,
+      "source_object": "glass_front_edge_-0.394",
+      "source_vertices": 8,
+      "export_vertices": 24,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 51,
+      "source_object": "glass_left",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 52,
+      "source_object": "glass_right",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 53,
+      "source_object": "grab_button",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 54,
+      "source_object": "grab_button_rim",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 55,
+      "source_object": "joystick_grip",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 56,
+      "source_object": "joystick_socket",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 57,
+      "source_object": "joystick_stem",
+      "source_vertices": 256,
+      "export_vertices": 324,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 58,
+      "source_object": "led_strip_0.34",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 59,
+      "source_object": "led_strip_-0.34",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 60,
+      "source_object": "post_0.423_0.35",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 61,
+      "source_object": "post_0.423_-0.35",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 62,
+      "source_object": "post_-0.423_0.35",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 63,
+      "source_object": "post_-0.423_-0.35",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 64,
+      "source_object": "prize_01_seam",
+      "source_vertices": 960,
+      "export_vertices": 1067,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 65,
+      "source_object": "prize_01_stitch_00",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 66,
+      "source_object": "prize_01_stitch_01",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 67,
+      "source_object": "prize_01_stitch_02",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 68,
+      "source_object": "prize_01_stitch_03",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 69,
+      "source_object": "prize_01_stitch_04",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 70,
+      "source_object": "prize_01_stitch_05",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 71,
+      "source_object": "prize_01_stitch_06",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 72,
+      "source_object": "prize_01_stitch_07",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 73,
+      "source_object": "prize_01_stitch_08",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 74,
+      "source_object": "prize_01_stitch_09",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 75,
+      "source_object": "prize_01_stitch_10",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 76,
+      "source_object": "prize_01_stitch_11",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 77,
+      "source_object": "prize_01_stitch_12",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 78,
+      "source_object": "prize_01_stitch_13",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 79,
+      "source_object": "prize_01_stitch_14",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 80,
+      "source_object": "prize_01_stitch_15",
+      "source_vertices": 20,
+      "export_vertices": 22,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 81,
+      "source_object": "prize_01_volume",
+      "source_vertices": 922,
+      "export_vertices": 1023,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 82,
+      "source_object": "rail_mount_0.325_0.3",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 83,
+      "source_object": "rail_mount_0.325_-0.3",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 84,
+      "source_object": "rail_mount_-0.325_0.3",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 85,
+      "source_object": "rail_mount_-0.325_-0.3",
+      "source_vertices": 96,
+      "export_vertices": 272,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 86,
+      "source_object": "rear_vent_0",
+      "source_vertices": 96,
+      "export_vertices": 280,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 87,
+      "source_object": "rear_vent_1",
+      "source_vertices": 96,
+      "export_vertices": 280,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 88,
+      "source_object": "rear_vent_2",
+      "source_vertices": 96,
+      "export_vertices": 280,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 89,
+      "source_object": "rear_vent_3",
+      "source_vertices": 96,
+      "export_vertices": 280,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 90,
+      "source_object": "rear_vent_4",
+      "source_vertices": 96,
+      "export_vertices": 280,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 91,
+      "source_object": "roof_crown",
+      "source_vertices": 96,
+      "export_vertices": 276,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 92,
+      "source_object": "roof_teal_insert",
+      "source_vertices": 96,
+      "export_vertices": 258,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 93,
+      "source_object": "roof_underside",
+      "source_vertices": 96,
+      "export_vertices": 304,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 94,
+      "source_object": "roof_wordmark",
+      "source_vertices": 1004,
+      "export_vertices": 1026,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 95,
+      "source_object": "studio_ground",
+      "source_vertices": 8,
+      "export_vertices": 24,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 96,
+      "source_object": "tray_backstop",
+      "source_vertices": 96,
+      "export_vertices": 257,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 97,
+      "source_object": "tray_floor",
+      "source_vertices": 96,
+      "export_vertices": 228,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 98,
+      "source_object": "tray_label",
+      "source_vertices": 1212,
+      "export_vertices": 1228,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 99,
+      "source_object": "tray_leftwall",
+      "source_vertices": 96,
+      "export_vertices": 266,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 100,
+      "source_object": "tray_lip",
+      "source_vertices": 96,
+      "export_vertices": 250,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "mesh": 101,
+      "source_object": "tray_rightwall",
+      "source_vertices": 96,
+      "export_vertices": 266,
+      "max_bidirectional_vertex_error_m": 0.0
+    }
+  ],
+  "max_vertex_error_m": 0.0
+}

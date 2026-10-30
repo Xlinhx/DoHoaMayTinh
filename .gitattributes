@@ -1,0 +1,20 @@
+# Keep canonical manifest bytes stable: SHA-256 provenance uses the raw JSON.
+*.json -text
+*.png -text
+*.jpg -text
+*.blend -text
+*.glb -text
+
+# Source and documentation use LF on checkout across platforms.
+*.cpp text eol=lf
+*.h text eol=lf
+*.c text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.vert text eol=lf
+*.frag text eol=lf
+*.cmake text eol=lf
+CMakeLists.txt text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.clang-format text eol=lf

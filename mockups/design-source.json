@@ -1,0 +1,615 @@
+{
+  "schema": "claw-lab.design/v1",
+  "revision": "r1",
+  "status": "proposed-design-for-review",
+  "project": "CLAW LAB",
+  "style": "compact arcade / cream-teal-orange",
+  "units": "metres",
+  "coordinates": {
+    "authoring_up": "Z",
+    "runtime_up": "Y",
+    "runtime_from_authoring": "(x,z,-y)",
+    "front_authoring": "-Y"
+  },
+  "cabinet": {
+    "width": 0.9,
+    "body_depth": 0.76,
+    "overall_depth": 0.91,
+    "height": 1.8,
+    "floor_z": 0.7,
+    "gantry_z": 1.62,
+    "rail_limit_x": [
+      -0.27,
+      0.27
+    ],
+    "rail_limit_y": [
+      -0.18,
+      0.22
+    ],
+    "head_z": [
+      1.0,
+      1.46
+    ],
+    "inner_glass_bounds_xy": [
+      [
+        -0.424,
+        0.424
+      ],
+      [
+        -0.352,
+        0.352
+      ]
+    ]
+  },
+  "palette": {
+    "cream": {
+      "hex": "#F3EBDD",
+      "roughness": 0.42,
+      "metallic": 0.0
+    },
+    "teal": {
+      "hex": "#196C67",
+      "roughness": 0.35,
+      "metallic": 0.0
+    },
+    "orange": {
+      "hex": "#ED773D",
+      "roughness": 0.36,
+      "metallic": 0.0
+    },
+    "steel": {
+      "hex": "#B6C2C2",
+      "roughness": 0.24,
+      "metallic": 0.78
+    },
+    "dark": {
+      "hex": "#173B3A",
+      "roughness": 0.55,
+      "metallic": 0.0
+    },
+    "prize": {
+      "hex": "#E8B4A6",
+      "roughness": 0.92,
+      "metallic": 0.0
+    },
+    "seam": {
+      "hex": "#A96051",
+      "roughness": 0.9,
+      "metallic": 0.0
+    },
+    "led": {
+      "hex": "#FFE2A8",
+      "roughness": 0.4,
+      "metallic": 0.0
+    },
+    "glass": {
+      "hex": "#CFE6DF",
+      "roughness": 0.12,
+      "metallic": 0.0,
+      "opacity": 0.065
+    }
+  },
+  "prize_asset": {
+    "id": "prize_capsule_01",
+    "role": "neutral soft-volume placeholder, not a selected animal or final character",
+    "dimensions": [
+      0.146,
+      0.118,
+      0.124
+    ],
+    "identity": "one pink rounded capsule with one dark equatorial sewn seam, no face/ears/logo",
+    "material_ids": [
+      "prize",
+      "seam",
+      "cream"
+    ],
+    "instance_count": 8,
+    "target_id": "prize_03"
+  },
+  "prizes": [
+    {
+      "id": "prize_01",
+      "xy": [
+        -0.22,
+        0.2
+      ],
+      "yaw_deg": -18
+    },
+    {
+      "id": "prize_02",
+      "xy": [
+        -0.01,
+        0.2
+      ],
+      "yaw_deg": 21
+    },
+    {
+      "id": "prize_03",
+      "xy": [
+        0.14,
+        0.06
+      ],
+      "yaw_deg": -12
+    },
+    {
+      "id": "prize_04",
+      "xy": [
+        0.25,
+        0.21
+      ],
+      "yaw_deg": 44
+    },
+    {
+      "id": "prize_05",
+      "xy": [
+        -0.22,
+        0.02
+      ],
+      "yaw_deg": 24
+    },
+    {
+      "id": "prize_06",
+      "xy": [
+        -0.04,
+        0.02
+      ],
+      "yaw_deg": -36
+    },
+    {
+      "id": "prize_07",
+      "xy": [
+        0.02,
+        -0.18
+      ],
+      "yaw_deg": 18
+    },
+    {
+      "id": "prize_08",
+      "xy": [
+        0.25,
+        -0.16
+      ],
+      "yaw_deg": -26
+    }
+  ],
+  "chute": {
+    "opening_x": [
+      -0.37,
+      -0.14
+    ],
+    "opening_y": [
+      -0.3,
+      -0.08
+    ],
+    "drop_xy": [
+      -0.255,
+      -0.18
+    ],
+    "delivery_z": 0.29,
+    "delivery_xy": [
+      -0.255,
+      -0.3
+    ],
+    "guided_centerline": [
+      [
+        -0.255,
+        -0.18,
+        0.62
+      ],
+      [
+        -0.255,
+        -0.18,
+        0.51
+      ],
+      [
+        -0.255,
+        -0.3,
+        0.51
+      ],
+      [
+        -0.255,
+        -0.3,
+        0.29
+      ]
+    ]
+  },
+  "claw": {
+    "asset_id": "claw_01",
+    "finger_count": 3,
+    "finger_spacing_deg": 120,
+    "finger_open_deg": -22,
+    "finger_closed_deg": 0,
+    "head_radius": 0.047,
+    "grip_offset_z": -0.238
+  },
+  "states": {
+    "idle": {
+      "xy": [
+        0.0,
+        0.1
+      ],
+      "head_z": 1.46,
+      "finger_deg": -22,
+      "target": "floor"
+    },
+    "aim": {
+      "xy": [
+        0.14,
+        0.06
+      ],
+      "head_z": 1.46,
+      "finger_deg": -22,
+      "target": "floor"
+    },
+    "lower": {
+      "xy": [
+        0.14,
+        0.06
+      ],
+      "head_z": 1.0,
+      "finger_deg": -22,
+      "target": "floor"
+    },
+    "grip": {
+      "xy": [
+        0.14,
+        0.06
+      ],
+      "head_z": 1.0,
+      "finger_deg": 0,
+      "target": "held"
+    },
+    "lift": {
+      "xy": [
+        0.14,
+        0.06
+      ],
+      "head_z": 1.38,
+      "finger_deg": 0,
+      "target": "held"
+    },
+    "return": {
+      "xy": [
+        -0.255,
+        -0.18
+      ],
+      "head_z": 1.46,
+      "finger_deg": 0,
+      "target": "held"
+    },
+    "release": {
+      "xy": [
+        -0.255,
+        -0.18
+      ],
+      "head_z": 1.46,
+      "finger_deg": -22,
+      "target": "falling",
+      "target_z": 0.91
+    },
+    "result": {
+      "xy": [
+        -0.255,
+        -0.18
+      ],
+      "head_z": 1.46,
+      "finger_deg": -22,
+      "target": "delivered"
+    }
+  },
+  "shots": [
+    {
+      "id": "01-hero",
+      "title": "Tổng thể / góc chéo",
+      "group": "geometry",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "idle"
+    },
+    {
+      "id": "02-front",
+      "title": "Chính diện",
+      "group": "geometry",
+      "camera": [
+        0,
+        -4.8,
+        0.9
+      ],
+      "look_at": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho": 2.12,
+      "state": "idle"
+    },
+    {
+      "id": "03-side",
+      "title": "Bên phải",
+      "group": "geometry",
+      "camera": [
+        4.8,
+        0,
+        0.9
+      ],
+      "look_at": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho": 2.12,
+      "state": "idle"
+    },
+    {
+      "id": "04-back",
+      "title": "Phía sau",
+      "group": "geometry",
+      "camera": [
+        0,
+        4.8,
+        0.9
+      ],
+      "look_at": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho": 2.12,
+      "state": "idle"
+    },
+    {
+      "id": "05-top",
+      "title": "Từ trên / bỏ mái",
+      "group": "geometry",
+      "camera": [
+        0,
+        0,
+        5
+      ],
+      "look_at": [
+        0,
+        0,
+        0.7
+      ],
+      "ortho": 1.22,
+      "state": "idle",
+      "hide": [
+        "roof",
+        "gantry",
+        "head",
+        "glass"
+      ]
+    },
+    {
+      "id": "06-cutaway",
+      "title": "Cơ cấu / bỏ kính và mái",
+      "group": "mechanism",
+      "camera": [
+        2.45,
+        -3.45,
+        2.3
+      ],
+      "look_at": [
+        0,
+        0,
+        0.95
+      ],
+      "ortho": 2.6,
+      "state": "lower",
+      "hide": [
+        "glass",
+        "roof"
+      ]
+    },
+    {
+      "id": "07-claw-open",
+      "title": "Càng mở / cùng mesh",
+      "group": "mechanism",
+      "camera": [
+        0.7,
+        -0.8,
+        1.3
+      ],
+      "look_at": [
+        0.14,
+        0.06,
+        0.88
+      ],
+      "ortho": 0.55,
+      "state": "lower",
+      "isolate": "claw"
+    },
+    {
+      "id": "08-claw-grip",
+      "title": "Càng khép / cùng mesh",
+      "group": "mechanism",
+      "camera": [
+        0.7,
+        -0.8,
+        1.3
+      ],
+      "look_at": [
+        0.14,
+        0.06,
+        0.88
+      ],
+      "ortho": 0.55,
+      "state": "grip",
+      "isolate": "claw"
+    },
+    {
+      "id": "09-prize",
+      "title": "Vật phẩm mẫu / chưa chốt nhân vật",
+      "group": "mechanism",
+      "camera": [
+        0.46,
+        -0.5,
+        1.02
+      ],
+      "look_at": [
+        0.14,
+        0.06,
+        0.762
+      ],
+      "ortho": 0.32,
+      "state": "aim",
+      "isolate": "prize"
+    },
+    {
+      "id": "10-aim",
+      "title": "01 / Căn vị trí",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "aim"
+    },
+    {
+      "id": "11-lower",
+      "title": "02 / Hạ càng",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "lower"
+    },
+    {
+      "id": "12-grip",
+      "title": "03 / Khép càng",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "grip"
+    },
+    {
+      "id": "13-lift",
+      "title": "04 / Nâng vật phẩm",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "lift"
+    },
+    {
+      "id": "14-return",
+      "title": "05 / Về cửa thả",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "return"
+    },
+    {
+      "id": "15-release",
+      "title": "06 / Thả vật phẩm",
+      "group": "states",
+      "camera": [
+        2.55,
+        -3.65,
+        2.45
+      ],
+      "look_at": [
+        0,
+        0,
+        0.93
+      ],
+      "ortho": 2.75,
+      "state": "release"
+    },
+    {
+      "id": "16-result",
+      "title": "07 / Đến khay nhận",
+      "group": "states",
+      "camera": [
+        1.55,
+        -3.65,
+        1.6
+      ],
+      "look_at": [
+        -0.1,
+        -0.1,
+        0.8
+      ],
+      "ortho": 2.4,
+      "state": "result"
+    },
+    {
+      "id": "17-materials",
+      "title": "Vật liệu / cùng bảng màu",
+      "group": "materials",
+      "camera": [
+        1.7,
+        -3.3,
+        1.6
+      ],
+      "look_at": [
+        0,
+        0,
+        0.45
+      ],
+      "ortho": 1.25,
+      "state": "idle",
+      "materials_board": true
+    }
+  ],
+  "invariants": [
+    "All images are rendered from one master Blender scene generated from this file.",
+    "Changing camera, visibility or state must not recreate assets or alter material identity.",
+    "All eight prize instances share mesh datablocks and material IDs; no species/face/accessory substitution.",
+    "The carried and delivered prize is prize_03 itself, never a duplicate or substitute.",
+    "Exactly three fingers at 120 degrees; every state changes joint transforms only.",
+    "Orthographic views use one common scale except explicitly labelled top/detail shots.",
+    "Rendering is proposed Blender look-development, not evidence of an implemented OpenGL renderer.",
+    "Open-angle is -22 degrees; evaluated mesh envelope at 32 sampled extreme-travel poses must stay inside the glass and above the floor."
+  ]
+}
