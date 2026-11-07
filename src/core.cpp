@@ -314,7 +314,10 @@ void applyPose(Scene &scene, const RoundSnapshot &s, const DesignConfig &, glm::
     node("claw_head").local.translation.y = s.headY;
     auto &cable = node("lift_cable").local;
     cable.translation.y = (1.54f + s.headY + .04f) / 2;
-    cable.scale.y = (1.54f - s.headY - .04f) / .1f;
+    // Procedural cylinder mesh is unit-height (Y in [-0.5, 0.5]);
+    // use the requested world-space cable length directly. The old GLB mesh
+    // was only 0.1 units tall, hence its previous division by 0.1.
+    cable.scale.y = std::max(0.f, 1.54f - s.headY - .04f);
     for (int i = 0; i < 3; i++)
         node("finger_joint_" + std::to_string(i)).local.rotation =
             glm::angleAxis(glm::radians(-s.finger), glm::vec3(0, 0, 1));

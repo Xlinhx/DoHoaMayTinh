@@ -1,5 +1,5 @@
 #pragma once
-#include "assets/GltfLoader.h"
+#include "assets/SceneAsset.h"
 #include <glad/gl.h>
 namespace claw {
 struct RenderOptions {

@@ -1,4 +1,4 @@
-#include "assets/GltfLoader.h"
+#include "model/ProceduralModel.h"
 #include "core.h"
 #include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -9,7 +9,7 @@ using namespace claw;
 using Catch::Approx;
 const std::filesystem::path root = SOURCE_ROOT;
 DesignConfig design() {
-    return loadDesign(root / "mockups/design-source.json");
+    return loadDesign(root / "assets/design/design-source.json");
 }
 TEST_CASE("resources resolve beside executable, not cwd", "[resource]") {
     CHECK(resourceRoot(root / "build/release/claw_lab.exe") == root / "build/release");
@@ -181,36 +181,77 @@ TEST_CASE("fixed clock matches frame rates and drops focus backlog", "[round]") 
     CHECK(clock.steps(20, false) == 0);
     CHECK(clock.steps(0, true) == 0);
 }
-TEST_CASE("GLB import keeps named Y-up hierarchy and shared geometry", "[import]") {
-    auto a = GltfLoader::load(root / "assets/models/claw-lab-r1.glb");
+TEST_CASE("procedural scene contains the required machine hierarchy and prize placements", "[procedural]") {
+    auto a = buildProceduralScene();
+
+    REQUIRE(a.scene.find("bridge_y") >= 0);
+    REQUIRE(a.scene.find("trolley_x") >= 0);
     REQUIRE(a.scene.find("claw_head") >= 0);
+    REQUIRE(a.scene.find("finger_joint_0") >= 0);
+    REQUIRE(a.scene.find("finger_joint_1") >= 0);
+    REQUIRE(a.scene.find("finger_joint_2") >= 0);
+    REQUIRE(a.scene.find("studio_ground") >= 0);
+
     REQUIRE(a.scene.find("prize_03") >= 0);
-    auto p = glm::vec3(a.scene.worldMatrix(a.scene.find("prize_03"))[3]);
+    const auto prize03 = a.scene.find("prize_03");
+    const auto p = glm::vec3(a.scene.worldMatrix(prize03)[3]);
     CHECK(p.x == Approx(.14));
     CHECK(p.y == Approx(.762));
     CHECK(p.z == Approx(-.06));
-    int finger = a.scene.nodes[a.scene.find("finger_0")].mesh;
-    CHECK(a.scene.nodes[a.scene.find("finger_1")].mesh == finger);
-    CHECK(a.scene.nodes[a.scene.find("finger_2")].mesh == finger);
-    int shared = a.scene.nodes[a.scene.find("prize_01_volume")].mesh;
-    for (int i = 1; i <= 8; i++)
-        CHECK(a.scene.nodes[a.scene.find("prize_0" + std::to_string(i) + "_volume")].mesh == shared);
-    CHECK_FALSE(a.images.empty());
-    CHECK_THROWS(GltfLoader::load(root / "missing.glb"));
+
+    // The three fingers are generated from the same procedural finger mesh.
+    const int fingerMesh = a.scene.nodes[a.scene.find("finger_0")].mesh;
+    REQUIRE(fingerMesh >= 0);
+    CHECK(a.scene.nodes[a.scene.find("finger_1")].mesh == fingerMesh);
+    CHECK(a.scene.nodes[a.scene.find("finger_2")].mesh == fingerMesh);
+
+    // All eight prize volumes reuse one sphere mesh/material combination.
+    const int prizeMesh = a.scene.nodes[a.scene.find("prize_01_volume")].mesh;
+    REQUIRE(prizeMesh >= 0);
+    for (int i = 1; i <= 8; ++i) {
+        const auto name = "prize_0" + std::to_string(i) + "_volume";
+        const int nodeIndex = a.scene.find(name);
+        REQUIRE(nodeIndex >= 0);
+        CHECK(a.scene.nodes[nodeIndex].mesh == prizeMesh);
+    }
 }
-TEST_CASE("woven sRGB texture preserves the canonical pink base color", "[import]") {
-    auto a = GltfLoader::load(root / "assets/models/claw-lab-r1.glb");
-    REQUIRE_FALSE(a.images.empty());
-    const auto &image = a.images.front();
-    double mean[3] = {0, 0, 0};
-    int pixels = image.width * image.height;
-    for (int i = 0; i < pixels; i++)
-        for (int c = 0; c < 3; c++)
-            mean[c] += image.pixels[i * image.components + c] / double(pixels);
-    CHECK(mean[0] == Approx(232).margin(12));
-    CHECK(mean[1] == Approx(180).margin(12));
-    CHECK(mean[2] == Approx(166).margin(12));
+
+TEST_CASE("procedural geometry has valid vertex/index buffers and material references", "[procedural]") {
+    auto a = buildProceduralScene();
+
+    REQUIRE_FALSE(a.meshes.empty());
+    REQUIRE_FALSE(a.materials.empty());
+    CHECK(a.images.empty()); // Procedural materials do not depend on Blender textures.
+
+    for (const auto &node : a.scene.nodes) {
+        CHECK(node.mesh < static_cast<int>(a.meshes.size()));
+        CHECK(node.mesh >= -1);
+    }
+
+    for (const auto &mesh : a.meshes) {
+        REQUIRE_FALSE(mesh.primitives.empty());
+        for (const auto &primitive : mesh.primitives) {
+            REQUIRE_FALSE(primitive.vertices.empty());
+            REQUIRE_FALSE(primitive.indices.empty());
+            CHECK(primitive.indices.size() % 3 == 0);
+            CHECK(primitive.material >= 0);
+            CHECK(primitive.material < static_cast<int>(a.materials.size()));
+            for (const auto index : primitive.indices)
+                CHECK(index < primitive.vertices.size());
+        }
+    }
+
+    bool hasGlass = false;
+    bool hasPrize = false;
+    for (const auto &material : a.materials) {
+        CHECK(material.texture == -1);
+        hasGlass = hasGlass || material.name == "glass";
+        hasPrize = hasPrize || material.name == "prize";
+    }
+    CHECK(hasGlass);
+    CHECK(hasPrize);
 }
+
 TEST_CASE("all replayed rounds preserve eight identities; movement unlocks after result", "[round]") {
     Round r(design());
     r.setAim({.14f, -.06f});

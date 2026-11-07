@@ -1,4 +1,6 @@
-#include "assets/GltfLoader.h"
+#include "assets/SceneAsset.h"
+#include "model/ProceduralModel.h"
+
 #include "core.h"
 #include "graphics/Renderer.h"
 #define GLFW_INCLUDE_NONE
@@ -207,7 +209,7 @@ int main(int argc, char **argv) {
         if (width < 1 || height < 1 || width > 4096 || height > 4096)
             throw std::runtime_error("Invalid window size (1..4096)");
         auto design = loadDesign(root / "assets/design/design-source.json");
-        auto asset = GltfLoader::load(root / "assets/models/claw-lab-r1.glb");
+        auto asset = buildProceduralScene();
         Window window(width, height, hidden);
         auto w = window.handle;
         std::string gpu = reinterpret_cast<const char *>(glGetString(GL_RENDERER)),

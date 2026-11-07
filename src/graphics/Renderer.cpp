@@ -4,6 +4,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/norm.hpp>
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
 #include <stdexcept>
 namespace claw {
@@ -214,9 +216,11 @@ void Renderer::draw(const Scene &scene, const Camera &camera, int width, int hei
     glClearColor(studioBackground.r, studioBackground.g, studioBackground.b, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glUseProgram(lit_);
+
     mat4(lit_, "view", camera.view());
     mat4(lit_, "projection", camera.projection(width, height));
     mat4(lit_, "lightVP", lightVP);
+
     vector3(lit_, "eye", camera.eye);
     vector3(lit_, "studioBackground", studioBackground);
     integer(lit_, "enableShadow", options.shadow);
@@ -228,7 +232,9 @@ void Renderer::draw(const Scene &scene, const Camera &camera, int width, int hei
     auto drawItem = [&](const Item &item) {
         auto &p = *item.gpu;
         auto &m = asset_.materials.at(p.material);
+
         mat4(lit_, "model", item.world);
+        
         glUniform4fv(glGetUniformLocation(lit_, "baseColor"), 1, glm::value_ptr(m.color));
         vector3(lit_, "emission", m.emission);
         scalar(lit_, "roughness", m.roughness);

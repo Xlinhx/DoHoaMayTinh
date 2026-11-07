@@ -1,5 +1,6 @@
 // Manual GPU regression: use the production orbit and renderer at the lowest angle.
 #include "graphics/Renderer.h"
+#include "model/ProceduralModel.h"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -21,7 +22,7 @@ int main() {
     int result = 0;
     try {
         auto design = loadDesign(root / "assets/design/design-source.json");
-        auto asset = GltfLoader::load(root / "assets/models/claw-lab-r1.glb");
+        auto asset = buildProceduralScene();
         Renderer renderer(asset, root / "shaders");
         Camera camera;
         camera.preset(design.data["shots"][0]);

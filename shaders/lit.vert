@@ -9,6 +9,7 @@ out vec2 uv;
 out vec4 lightPosition;
 void main() {
     vec4 p = model * vec4(position, 1.0);
+    
     worldPosition = p.xyz;
     worldNormal = transpose(inverse(mat3(model))) * normal;
     uv = texcoord;
