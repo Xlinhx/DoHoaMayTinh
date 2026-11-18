@@ -29,13 +29,13 @@ Tìm `new_from_object` trong [export_assets.py](../tools/export_assets.py): geom
 
 Đừng nhầm normal với vị trí: vị trí trả lời “điểm nằm đâu”, normal trả lời “mặt hướng về đâu”. Thay normal có thể làm bề mặt sáng khác nhưng không đổi silhouette. Muốn đường viền cong mịn hơn phải có đủ geometry, không chỉ bật smooth shading.
 
-Trong dự án, normals đến từ asset Blender. [GltfLoader.cpp](../src/assets/GltfLoader.cpp), hàm `GltfLoader::load`, đọc `POSITION`, `NORMAL`, `TEXCOORD_0`. Renderer gửi ba thuộc tính qua location 0, 1, 2. `glDrawElements(GL_TRIANGLES,...)` yêu cầu GPU dựng các tam giác từ indices. Dự án không dùng `glBegin` hoặc hệ ma trận legacy.
+Trong dự án, normals đến từ dữ liệu đỉnh tự sinh trong [ProceduralModel.cpp](../src/model/ProceduralModel.cpp). Renderer gửi ba thuộc tính `position`, `normal`, `uv` qua location 0, 1, 2. `glDrawElements(GL_TRIANGLES,...)` yêu cầu GPU dựng các tam giác từ indices. Dự án không dùng `glBegin` hoặc hệ ma trận legacy.
 
 ### 1.1.4. Mesh khác instance thế nào?
 
 Mesh là khuôn dữ liệu; **instance** là một lần sử dụng khuôn đó với transform và danh tính riêng. Tám capsule không cần tám thiết kế: node `prize_01`…`prize_08` có vị trí/yaw khác nhau nhưng các phần volume, seam, stitch chia sẻ mesh tương ứng. Ba ngón gắp cũng dùng chung mesh ngón.
 
-Trong [GltfLoader.h](../src/assets/GltfLoader.h), `SceneAsset` giữ danh sách `meshes`, còn `Node::mesh` là chỉ số tham chiếu. Renderer nạp một bộ GPU buffers cho mỗi mesh rồi vẽ lại bằng các world matrix khác nhau. Đây là tái sử dụng mesh; code chưa dùng một lệnh `glDrawElementsInstanced` cho cả nhóm, nên không gọi nó là hardware instancing.
+Trong [SceneAsset.h](../src/assets/SceneAsset.h), `SceneAsset` giữ danh sách `meshes`, còn node giữ chỉ số tham chiếu mesh. Renderer nạp một bộ GPU buffers cho mỗi mesh rồi vẽ lại bằng các world matrix khác nhau. Đây là tái sử dụng mesh; code chưa dùng một lệnh `glDrawElementsInstanced` cho cả nhóm, nên không gọi nó là hardware instancing.
 
 Vật phẩm được nâng vẫn là chính `PrizeState` có ID đã chọn. Không sinh một “vật phẩm cầm trên càng” khác rồi đổi hình khi tới khay. Đây là bất biến danh tính xuyên suốt gameplay, không chỉ yêu cầu thẩm mỹ.
 

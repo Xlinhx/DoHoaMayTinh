@@ -4,6 +4,8 @@
 *.jpg -text
 *.blend -text
 *.glb -text
+*.pptx -text
+*.pdf -text
 
 # Source and documentation use LF on checkout across platforms.
 *.cpp text eol=lf

@@ -40,7 +40,7 @@ Sơ đồ diễn tả dòng dữ liệu khái niệm. GPU có thể tối ưu th
 ## 0.4. Bản đồ mã nguồn
 
 - [src/core.h](../src/core.h) khai báo dữ liệu; [src/core.cpp](../src/core.cpp) thực hiện `localMatrix`, `Scene::worldMatrix`, `Camera`, `Round`, `FixedClock`, `chooseCandidate`, `applyPose`.
-- [GltfLoader.cpp](../src/assets/GltfLoader.cpp) chuyển dữ liệu glTF thành dữ liệu ứng dụng. [GltfLoader.h](../src/assets/GltfLoader.h) định nghĩa `Vertex`, `Mesh`, `Material`, `SceneAsset`.
+- [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) dựng lưới C++, vật liệu và cây node. [SceneAsset.h](../src/assets/SceneAsset.h) định nghĩa `Vertex`, `Primitive`, `Material`, `SceneAsset`.
 - [Renderer.cpp](../src/graphics/Renderer.cpp) tạo tài nguyên GPU, đặt render state và gửi draw calls. [lit.vert](../shaders/lit.vert), [lit.frag](../shaders/lit.frag), [depth.vert](../shaders/depth.vert), [depth.frag](../shaders/depth.frag) là shader của dự án.
 - [main.cpp](../src/main.cpp) tạo cửa sổ/context, lặp frame, nhận input, gọi simulation rồi renderer và vẽ controls.
 - [build_reference.py](../mockups/build_reference.py) dựng nguồn Blender; [export_assets.py](../tools/export_assets.py) xuất GLB. Chúng không chạy trong mỗi frame game.

@@ -1,6 +1,12 @@
 # CLAW LAB
 
-Máy gắp 3D C++17 / OpenGL 3.3 Core, dựng từ scene Blender r1. Có ba ngón, tám vật phẩm dùng chung thiết kế, chu trình gắp trúng/hụt, camera và chơi lại. Hình ảnh dùng Blinn–Phong, texture, depth, kính và shadow mapping; chuyển động là mô phỏng có quy tắc, không phải vật lý vải/contact đầy đủ.
+Máy gắp 3D C++17 / OpenGL 3.3 Core, tự sinh hình học trong C++ (`ProceduralModel`). Có ba ngón cong Bézier, tám viên nhộng dùng chung lưới, chu trình gắp trúng/hụt, camera đa góc và chơi lại. Hình ảnh dùng Blinn–Phong, kính trong suốt Fresnel và Shadow Mapping; chuyển động mô phỏng theo `FixedClock` có quy tắc, không dùng engine vật lý vật rắn đầy đủ.
+
+## Slide thuyết trình
+
+- **File PowerPoint gốc (18 slide):** [slides/CLAW-LAB-Thuyet-trinh.pptx](slides/CLAW-LAB-Thuyet-trinh.pptx)
+- **Bản PDF xem trực tiếp:** [slides/CLAW-LAB-Thuyet-trinh.pdf](slides/CLAW-LAB-Thuyet-trinh.pdf)
+- **Chi tiết phân công & ảnh xem trước:** [slides/README.md](slides/README.md)
 
 ## Học và trình bày theo ba người
 
@@ -51,12 +57,16 @@ python tools/verify_runtime.py dist/claw-lab
 
 Ảnh Blender tại `mockups/renders/`; ảnh OpenGL tại `output/runtime/reference/`. `assets/design/export-provenance.json` ràng buộc SHA-256 của manifest, scene gốc và GLB, đồng thời ghi phép so sánh vị trí đỉnh sau export. [Đặc tả hiện tại](docs/06-dac-ta-va-tham-khao.md) ghi hợp đồng thiết kế, giới hạn và nguồn đọc thêm.
 
-## Mã nguồn
+## Kiến trúc thư mục & mã nguồn
 
-- `src/core.h`, `src/core.cpp`: scene graph, transform, camera, thiết kế, quy tắc gắp, fixed clock và state machine. Dữ liệu gameplay độc lập renderer.
-- `src/assets/GltfLoader.*`: giải mã glTF, giữ shared mesh, UV, material, node names và hệ trục Y-up.
-- `src/graphics/Renderer.*`, `shaders/`: RAII GPU resources, Blinn–Phong, texture sRGB, depth/shadow/opaque/glass passes, chụp PNG.
+- `slides/`: slide thuyết trình cuối (`CLAW-LAB-Thuyet-trinh.pptx`, `.pdf`) và ảnh xem trước.
+- `docs/`: tài liệu giải thích kiến trúc đồ họa, kịch bản 3 người và đặc tả kỹ thuật.
+- `src/core.h`, `src/core.cpp`: scene graph, transform, camera, luật gắp, fixed clock và state machine. Dữ liệu gameplay độc lập renderer.
+- `src/assets/SceneAsset.h`: cấu trúc dữ liệu `Vertex`, `Primitive`, `Material`, `SceneAsset`.
+- `src/model/ProceduralModel.h`, `src/model/ProceduralModel.cpp`: tự sinh lưới hình khối cơ bản, ngón gắp 2 đoạn Bézier quét 25 vòng và cây phân cấp cảnh.
+- `src/graphics/Renderer.*`, `shaders/`: RAII GPU resources, Blinn–Phong, depth/shadow/opaque/glass passes, chụp PNG.
 - `src/main.cpp`: context Windows/GLFW, input, thanh điều khiển Dear ImGui, vòng lặp và CLI kiểm chứng.
-- `tests/core_tests.cpp`: các phép thử hành vi, import và failure paths; không có scene hoặc state machine giả riêng cho test.
+- `tests/`: các phép thử hành vi (`core_tests.cpp`) và render góc thấp (`camera_floor_render.cpp`).
+- `tools/`, `mockups/`: script build/kiểm chứng và file Blender/render tham chiếu thiết kế.
 
 Phần tự viết: logic, transforms/camera, importer adapter, renderer và shader. GLM thực hiện phép toán ma trận; GLFW tạo context/input; TinyGLTF/stb đọc dữ liệu; GPU rasterize, depth test và blend; Dear ImGui vẽ controls. Chi tiết license tại `THIRD_PARTY_NOTICES.md`.
