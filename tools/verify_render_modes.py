@@ -5,12 +5,12 @@ from PIL import Image, ImageChops, ImageStat
 ROOT=Path(__file__).resolve().parents[1]
 exe=ROOT/'dist/claw-lab/claw_lab.exe'
 out=ROOT/'output/runtime/modes'
-for mode,args in [('lit',[]),('no-glass',['--no-glass']),('no-shadow',['--no-shadow']),('unlit',['--unlit']),('no-texture',['--no-texture'])]:
+for mode,args in [('lit',[]),('no-glass',['--no-glass']),('no-shadow',['--no-shadow']),('unlit',['--unlit'])]:
     r=subprocess.run([str(exe),'--hidden','--shot','01-hero','--size','700x700','--output',str(out/mode),*args],cwd=ROOT,capture_output=True,text=True,timeout=60)
     assert r.returncode==0,(mode,r.stderr)
 base=Image.open(out/'lit/01-hero.png').convert('RGB')
 result={}
-for mode in ['no-glass','no-shadow','unlit','no-texture']:
+for mode in ['no-glass','no-shadow','unlit']:
     diff=ImageChops.difference(base,Image.open(out/mode/'01-hero.png').convert('RGB'))
     mean=sum(ImageStat.Stat(diff).mean)/3
     assert diff.getbbox() and mean>.001,(mode,mean)

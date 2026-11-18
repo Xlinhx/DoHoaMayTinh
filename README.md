@@ -38,12 +38,7 @@ ctest --test-dir build/release --output-on-failure
 cmake --install build/release --prefix dist/claw-lab
 ```
 
-GLAD đã được sinh sẵn trong `vendor/glad/`. Assets đã được xuất sẵn. Nếu chủ đích thay nguồn Blender, xuất lại bằng:
-
-```powershell
-& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b mockups/claw-lab-master.blend --python tools/export_assets.py
-python tools/verify_assets.py
-```
+GLAD đã được sinh sẵn trong `vendor/glad/`. Toàn bộ hình học 3D được tự sinh trực tiếp bằng C++ trong `src/model/ProceduralModel.cpp` dựa theo thông số `assets/design/design-source.json`.
 
 ## Đối chiếu và kiểm tra runtime
 
@@ -53,9 +48,9 @@ build/release/claw_lab.exe --hidden --benchmark --size 1920x1080 --output output
 python tools/verify_runtime.py dist/claw-lab
 ```
 
-`--capture-all` xuất 16 góc/tư thế liên quan tới máy từ cùng camera và dữ liệu pose của mockup; bỏ board vật liệu không thuộc gameplay. Framebuffer riêng giữ đúng 1400×1400, không bị Windows cắt theo chiều cao màn hình. `--verify` chạy mười lượt trúng/hụt bằng chính Round và Scene dùng khi chơi. `--shot 02-front`, `--no-glass`, `--no-shadow`, `--unlit`, `--no-texture` chỉ là tùy chọn CLI phục vụ phát triển; không có panel trình diễn trong giao diện.
+`--capture-all` xuất 16 góc/tư thế chuẩn hóa của máy; framebuffer riêng giữ đúng 1400×1400. `--verify` chạy mười lượt trúng/hụt bằng chính `Round` và `Scene` dùng khi chơi. `--shot 02-front`, `--no-glass`, `--no-shadow`, `--unlit`, `--no-texture` là tùy chọn CLI phục vụ kiểm thử; không có panel trình diễn trong giao diện.
 
-Ảnh Blender tại `mockups/renders/`; ảnh OpenGL tại `output/runtime/reference/`. `assets/design/export-provenance.json` ràng buộc SHA-256 của manifest, scene gốc và GLB, đồng thời ghi phép so sánh vị trí đỉnh sau export. [Đặc tả hiện tại](docs/06-dac-ta-va-tham-khao.md) ghi hợp đồng thiết kế, giới hạn và nguồn đọc thêm.
+Ảnh chụp OpenGL tại `output/runtime/reference/`. [Đặc tả hiện tại](docs/06-dac-ta-va-tham-khao.md) ghi thông số thiết kế, giới hạn kỹ thuật và nguồn đọc thêm.
 
 ## Kiến trúc thư mục & mã nguồn
 
@@ -67,6 +62,6 @@ python tools/verify_runtime.py dist/claw-lab
 - `src/graphics/Renderer.*`, `shaders/`: RAII GPU resources, Blinn–Phong, depth/shadow/opaque/glass passes, chụp PNG.
 - `src/main.cpp`: context Windows/GLFW, input, thanh điều khiển Dear ImGui, vòng lặp và CLI kiểm chứng.
 - `tests/`: các phép thử hành vi (`core_tests.cpp`) và render góc thấp (`camera_floor_render.cpp`).
-- `tools/`, `mockups/`: script build/kiểm chứng và file Blender/render tham chiếu thiết kế.
+- `tools/`: script tải thư viện, đóng gói và kiểm chứng runtime/docs/render modes.
 
-Phần tự viết: logic, transforms/camera, importer adapter, renderer và shader. GLM thực hiện phép toán ma trận; GLFW tạo context/input; TinyGLTF/stb đọc dữ liệu; GPU rasterize, depth test và blend; Dear ImGui vẽ controls. Chi tiết license tại `THIRD_PARTY_NOTICES.md`.
+Phần tự viết: hình học C++ (`ProceduralModel`), logic/camera (`core`), renderer và shader. GLM thực hiện phép toán ma trận; GLFW tạo context/input; nlohmann/json đọc `design-source.json`; GPU rasterize, depth test và blend; Dear ImGui vẽ controls. Chi tiết license tại `THIRD_PARTY_NOTICES.md`.

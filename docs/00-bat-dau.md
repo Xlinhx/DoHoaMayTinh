@@ -43,7 +43,7 @@ Sơ đồ diễn tả dòng dữ liệu khái niệm. GPU có thể tối ưu th
 - [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) dựng lưới C++, vật liệu và cây node. [SceneAsset.h](../src/assets/SceneAsset.h) định nghĩa `Vertex`, `Primitive`, `Material`, `SceneAsset`.
 - [Renderer.cpp](../src/graphics/Renderer.cpp) tạo tài nguyên GPU, đặt render state và gửi draw calls. [lit.vert](../shaders/lit.vert), [lit.frag](../shaders/lit.frag), [depth.vert](../shaders/depth.vert), [depth.frag](../shaders/depth.frag) là shader của dự án.
 - [main.cpp](../src/main.cpp) tạo cửa sổ/context, lặp frame, nhận input, gọi simulation rồi renderer và vẽ controls.
-- [build_reference.py](../mockups/build_reference.py) dựng nguồn Blender; [export_assets.py](../tools/export_assets.py) xuất GLB. Chúng không chạy trong mỗi frame game.
+- [tools/](../tools/) chứa các script kiểm chứng runtime, render modes, tài liệu và đóng gói phát hành. Chúng không chạy trong mỗi frame game.
 
 ## 0.5. Cách học mỗi phần
 

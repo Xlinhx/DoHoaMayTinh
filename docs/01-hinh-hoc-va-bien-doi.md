@@ -14,14 +14,12 @@ Một mặt hộp có bốn góc A, B, C, D có thể chia thành hai tam giác 
 
 ### 1.1.2. Gắn với bộ phận máy
 
-Trong [build_reference.py](../mockups/build_reference.py), tìm `cube`, `cylinder`, `sphere`, `curve`:
+Trong [ProceduralModel.cpp](../src/model/ProceduralModel.cpp), toàn bộ hình khối được tự sinh từ các hàm cơ bản:
 
-- Tủ, console, sàn khoang và khay nhận bắt đầu từ hộp, được bevel để bo cạnh.
-- Ray, chốt và thân đầu gắp dùng trụ; capsule dùng một mặt cầu được co giãn thành kích thước thiết kế.
-- Ngón gắp và đường may dùng curve có độ dày. Curve phải được chuyển thành mesh trước khi xuất runtime.
-- Chữ trên tủ cũng được chuyển thành hình học. Chữ này thuộc máy, khác với controls Dear ImGui được vẽ sau cảnh 3D.
-
-Tìm `new_from_object` trong [export_assets.py](../tools/export_assets.py): geometry đã evaluate, gồm kết quả modifier, được chuyển thành mesh. Vì vậy runtime nhận hình bo cạnh thật chứ không tự bevel bằng C++.
+- Tủ, khung kính, console, sàn khoang và khay nhận dựng từ `makeBox`.
+- Ray, chốt và cụm đầu gắp dựng từ `makeCylinder`.
+- Tám viên nhộng dùng `makeSphere` co giãn thành ellipsoid, kèm `makeTorus` làm đường ráp và các nút chỉ (`stitches`).
+- Ba ngón gắp dùng `makeFinger` quét 25 vòng tiết diện 10 cạnh dọc theo đường tâm Bézier 2 đoạn; cả ba ngón dùng chung một mesh `Shape::Finger` ở các góc `30°`, `150°` và `−90°`.
 
 ### 1.1.3. Normal là gì và dùng để làm gì?
 
@@ -129,22 +127,20 @@ P0 và P3 là hai đầu; P1 và P2 kéo hướng cong. Đường thường khô
 
 ### 1.4.2. Tính một điểm thật của dự án
 
-[curve-control-points.json](../assets/design/curve-control-points.json) lưu hai đoạn bậc ba từ curve Blender. Đoạn đầu gần đúng:
+Hàm `makeFinger` trong [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) định nghĩa trực tiếp hai đoạn Bézier bậc ba nối nhau tại `A3 = B0 = (0.070, −0.125)`. Đoạn A (mở ra từ khớp):
 
 ```text
-P0=(0, 0, 0)
-P1=(0.027329, 0, −0.048801)
-P2=(0.065995, 0, −0.069211)
-P3=(0.070000, 0, −0.125000)
+A0=(0.000,  0.000)
+A1=(0.027, −0.049)
+A2=(0.066, −0.069)
+A3=(0.070, −0.125)
 ```
 
-Tại t=0,5, các trọng số là 1/8, 3/8, 3/8, 1/8. Kết quả gần `(0.043747,0,−0.059880)` mét trong local authoring. Đây là phép thế số, không phải tọa độ world. Muốn hiển thị đúng phải đổi trục và áp hierarchy tương ứng.
+Tại t=0,5, các trọng số là 1/8, 3/8, 3/8, 1/8; `cubicBezier` trả về kết quả trong mặt phẳng cục bộ của ngón, rồi tiếp tuyến tại mỗi điểm tâm dùng để đặt 25 vòng tiết diện (13 điểm đoạn A + 12 điểm đoạn B, bỏ `B0` trùng `A3`).
 
 ### 1.4.3. Chính xác ai tính Bézier?
 
-Trong `build_reference.py`, tìm `bezier=True`, `BEZIER`, `handle_left_type='AUTO'`, `handle_right_type='AUTO'`. Script cung cấp ba knot, Blender tính auto handles tạo hai đoạn bậc ba. Đừng gọi ba knot đó là “ba điểm điều khiển của một Bézier bậc hai”: mỗi đoạn có bốn điểm gồm hai knot và hai handles.
-
-`export_assets.py` lấy tọa độ knot/handle thật vào JSON và chuyển curve evaluate thành mesh dùng chung. Runtime OpenGL vẽ mesh đã lấy mẫu; C++ không evaluate công thức Bézier mỗi frame. Khi đóng/mở, mesh ngón giữ nguyên; joint quay nó.
+C++ tự tính hai đoạn đường tâm bằng hàm `cubicBezier` trong [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) lúc khởi tạo (`buildModel`), rồi quét thành `Primitive` một lần để nạp lên GPU. Trong vòng lặp mỗi frame, C++ không tái tạo lưới ngón mà chỉ quay khớp `finger_joint_i` từ `−22°` về `0°`.
 
 ### 1.4.4. Học thêm và tự kiểm
 

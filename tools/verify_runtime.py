@@ -38,8 +38,8 @@ with tempfile.TemporaryDirectory(prefix='kiểm-chứng-',dir=build) as temp:
     (copied/'shaders/lit.frag').unlink()
     run(['--hidden','--frames','1'],cwd=private,expected=1,contains='lit.frag')
     (copied/'shaders/lit.frag').write_bytes(original)
-    (copied/'assets/models/claw-lab-r1.glb').unlink()
-    run(['--hidden','--frames','1'],cwd=private,expected=1,contains='claw-lab-r1.glb')
+    (copied/'assets/design/design-source.json').unlink()
+    run(['--hidden','--frames','1'],cwd=private,expected=1,contains='design-source.json')
     exe=old
     report['package_checks']=['10 rendered rounds: 5 hits / 5 misses','1366x768 PNG sizes','Unicode install path + different CWD + OS-only PATH','invalid shader compile -> nonzero with filename','shader link mismatch -> nonzero','missing shader -> nonzero with filename','missing asset -> nonzero with filename']
 report['executable_sha256']=hashlib.sha256(exe.read_bytes()).hexdigest()

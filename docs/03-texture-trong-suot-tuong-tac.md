@@ -14,7 +14,7 @@ UV thường dùng miền [0,1], nhưng có thể nằm ngoài miền đó để
 
 ### 3.1.2. Đường dữ liệu trong dự án
 
-1. [export_assets.py](../tools/export_assets.py) tạo ảnh dệt dùng chung 512×512, gắn vào material `prize`, pack vào GLB. Đây là texture màu được tạo offline; không phải nhân vật mới cho từng instance.
+1. Pipeline vật liệu có hỗ trợ thuộc tính `uv` và `colorTexture` để mở rộng khi cần nạp ảnh ngoài.
 2. [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) sinh `uv` cho mỗi `Vertex` và thiết lập vật liệu cho `SceneAsset` (hiện đặt `texture = -1` để dùng màu vật liệu tuyến tính).
 3. [Renderer.cpp](../src/graphics/Renderer.cpp) tạo texture GPU, đặt định dạng `GL_SRGB8` hoặc `GL_SRGB8_ALPHA8`, gửi UV vào vertex attribute 2 và bind ảnh tại texture unit 0.
 4. [lit.vert](../shaders/lit.vert) chuyển UV ra fragment stage. [lit.frag](../shaders/lit.frag) lấy `texture(colorTexture,uv)` rồi nhân `baseColor` nếu `hasTexture`.

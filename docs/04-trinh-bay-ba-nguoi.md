@@ -6,10 +6,10 @@ Có. Người 1 giải thích dữ liệu và vị trí; người 2 biến dữ 
 
 Cần tinh chỉnh bốn điểm:
 
-1. Người 2 giới thiệu nhanh cả pipeline trước camera để người nghe biết vertex/fragment ở đâu; dành phần UV và blending cho người 3. Normal được người 1 định nghĩa về hình học, người 2 dùng vào ánh sáng, không cần lặp nguyên phần định nghĩa.
-2. Gọi đúng **Blinn–Phong**, không chỉ nói Phong như ảnh. Giải thích công thức Phong như nền tảng so sánh, sau đó chỉ halfway vector trong shader thật.
-3. Bézier là phần tạo hình trong Blender; không nói C++ tính curve mỗi frame. Chỉ vào auto handles, hai đoạn bậc ba và mesh export để thể hiện nhóm hiểu nguồn hình dạng.
-4. Hai thuật toán 2D trong ảnh chưa được tích hợp. Có thể học/trình bày như kiến thức mở rộng, nhưng nếu thầy yêu cầu “tự cài và chạy trong đồ án” thì tài liệu hoặc giả mã chưa đáp ứng tiêu chí đó. Rubric lớp chưa có trong dự án nên không thể tự kết luận đủ yêu cầu học phần.
+1. Bộ slide thuyết trình chính thức nằm tại [slides/README.md](../slides/README.md) (`01–07` Người 1 · `08–14` Người 2 · `15–18` Người 3, hoặc chia `7–6–5` khi dời Slide 14 sang Người 3).
+2. Gọi đúng **Blinn–Phong**, giải thích halfway vector `H = normalize(L + V)` trong `shaders/lit.frag`.
+3. Bézier 2 đoạn và quét 25 vòng dựng ngón gắp được **tự tính trực tiếp bằng C++** trong [ProceduralModel.cpp](../src/model/ProceduralModel.cpp) lúc khởi tạo (không còn dùng GLB xuất từ Blender).
+4. Hai thuật toán 2D (Bresenham, Cohen–Sutherland) chưa tích hợp vào runtime và được ghi rõ ở mục giới hạn kỹ thuật trên Slide 18.
 
 ## 4.2. Phân thời gian để không lệch tải
 
@@ -21,7 +21,7 @@ Người 3 có nhiều chủ đề, nên không bắt họ vừa chạy toàn de
 
 Build Release, chạy CTest và `camera_floor_regression`; mở executable trong package từ vị trí sẽ dùng khi trình bày. Thử một lượt trúng, một lượt hụt, R giữa chu trình, orbit thấp, đổi projection. Đọc [controls](controls.md) để không nhầm reset scene với đổi góc camera.
 
-Mở sẵn các file `core.cpp`, `lit.vert`, `lit.frag`, `Renderer.cpp`, `build_reference.py`, `curve-control-points.json`. Dùng tìm tên hàm thay vì kéo tới một số dòng đã cũ. Phóng chữ đủ đọc. Không thay asset/shader trực tiếp trong package chính ngay trước buổi nói; nếu dùng tùy chọn A/B, chạy ở cửa sổ phát triển hoặc bản sao.
+Mở sẵn các file `core.cpp`, `ProceduralModel.cpp`, `lit.vert`, `lit.frag`, `Renderer.cpp`, `design-source.json`. Dùng tìm tên hàm thay vì chỉ bám số dòng. Không thay asset/shader trực tiếp trong package chính ngay trước buổi nói.
 
 Ảnh mockup giúp so geometry; ảnh runtime giúp giải thích kết quả. Đừng mở ảnh rồi gọi đó là game đang chạy. Package không cần mạng; nguồn tham khảo và docs nên có sẵn offline.
 
